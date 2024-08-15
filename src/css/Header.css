@@ -1,0 +1,13 @@
+header{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.title{
+    display: flex;
+    align-content: center;
+    font-size: 60px;
+    color: rgb(0, 60, 190);
+    font-weight: 900;
+}
