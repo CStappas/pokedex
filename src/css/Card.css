@@ -158,5 +158,43 @@
     background-color: #A890F0;
 }
 
+/* PokemonDetails.css */
+
+.pokemon-details {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .pokemon-details h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .pokemon-details img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+  }
+  
+  .pokemon-details p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .pokemon-details ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .pokemon-details ul li {
+    font-size: 14px;
+    color: #333;
+  }
+  
 
 
