@@ -78,7 +78,7 @@ function CardList() {
   };
 
   return (
-    <div>
+    <div className="card-section">
       <Search onSearchChange={handleSearchChange} />
       <div className="card-list">
         {paginatedPokemon.map((pokemon) => (
@@ -111,7 +111,7 @@ function CardList() {
       </div>
       {selectedPokemon && (
         <div className="pokemon-details">
-          <h2>{selectedPokemon.name} Details</h2>
+          <h2>{selectedPokemon.name}</h2>
           <img src={selectedPokemon.imageUrl} alt={selectedPokemon.name} />
           <p>Number: {selectedPokemon.number}</p>
           <p>Height: {selectedPokemon.height}</p>

@@ -5,11 +5,11 @@ import CardList from './components/CardList';
 
 function App() {
   return (
-    <>
+    <div className='page'>
     <Nav/>
     <Header/>
     <CardList />
-    </>
+    </div>
   );
 }
 

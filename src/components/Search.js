@@ -10,7 +10,6 @@ function Search({ onSearchChange }) {
         placeholder="Pokémon name, number, or type..."
         onChange={onSearchChange}
       />
-      <button type="button" className="search-button">Search</button>
     </div>
   );
 }
