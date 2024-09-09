@@ -1,3 +1,6 @@
+.nav .logo {
+  cursor: pointer;
+}
 nav {
   display: flex;
   height: 70px;

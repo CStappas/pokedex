@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "./Card";
 import Search from "./Search";
 import "../css/Card.css";
 
 function CardList() {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
   const itemsPerPage = 20;
 
   useEffect(() => {
@@ -27,7 +28,7 @@ function CardList() {
             imageUrl: data.sprites.front_default,
             number: data.id,
             types: data.types.map((typeInfo) => typeInfo.type.name),
-            url:poke.url
+            url: poke.url,
           };
         })
       );
@@ -41,20 +42,9 @@ function CardList() {
     setSearchQuery(event.target.value.toLowerCase());
     setCurrentPage(1);
   };
-  async function handleCardClick(pokemon) {
-    const res = await fetch(pokemon.url);
-    const data = await res.json();
 
-    setSelectedPokemon({
-      name: data.name,
-      imageUrl: data.sprites.front_default,
-      number: data.id,
-      height: data.height,
-      weight: data.weight,
-      abilities: data.abilities,
-      types: data.types,
-    });
-    console.log("Selected Pokémon Details:", data)
+  function handleCardClick(pokemon) {
+    navigate(`/pokemon/${pokemon.number}`);
   }
 
   const filteredPokemon = data.filter(
@@ -97,39 +87,15 @@ function CardList() {
           Previous
         </button>
         <span>
-          Page {currentPage} of{" "}
-          {Math.ceil(filteredPokemon.length / itemsPerPage)}
+          Page {currentPage} of {Math.ceil(filteredPokemon.length / itemsPerPage)}
         </span>
         <button
           onClick={goToNextPage}
-          disabled={
-            currentPage === Math.ceil(filteredPokemon.length / itemsPerPage)
-          }
+          disabled={currentPage === Math.ceil(filteredPokemon.length / itemsPerPage)}
         >
           Next
         </button>
       </div>
-      {selectedPokemon && (
-        <div className="pokemon-details">
-          <h2>{selectedPokemon.name}</h2>
-          <img src={selectedPokemon.imageUrl} alt={selectedPokemon.name} />
-          <p>Number: {selectedPokemon.number}</p>
-          <p>Height: {selectedPokemon.height}</p>
-          <p>Weight: {selectedPokemon.weight}</p>
-          <p>Abilities:</p>
-          <ul>
-            {selectedPokemon.abilities.map((ability, index) => (
-              <li key={index}>{ability.ability.name}</li>
-            ))}
-          </ul>
-          <p>Types:</p>
-          <ul>
-            {selectedPokemon.types.map((type, index) => (
-              <li key={index}>{type.type.name}</li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }
